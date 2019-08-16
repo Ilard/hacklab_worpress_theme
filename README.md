@@ -5,4 +5,4 @@ This theme isn't complete. Work in progress...
 1. Clone Gulp into gulp directory
 `git clone https://github.com/WOoOinux/gulp.git .`
 
-2. See installation instruction : `https://github.com/WOoOinux/gulp`
+2. Follow installation instructions (except step 2.2) : `https://github.com/WOoOinux/gulp`
