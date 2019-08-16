@@ -2,5 +2,7 @@
 This theme isn't complete. Work in progress...
 
 ## REQUIRE
-Clone Gulp into gulp directory
+1. Clone Gulp into gulp directory
 `git clone https://github.com/WOoOinux/gulp.git .`
+
+2. See installation instruction : `https://github.com/WOoOinux/gulp`
