@@ -112,12 +112,18 @@ function projects_type_display_metabox_info($post) {
 // Save metabox
 function projects_type_save_metabox_info($post_id, $post) {
 
-    if (isset($_POST['project_sources']) || isset($_POST['project_demo']) || !wp_verify_nonce('project_nonce_info', 'project_info')) {
-        $post_type = $post->post_type;
+    if (isset($_POST['project_nonce_info'])) {
+
         if (current_user_can('edit_posts', $post_id)) {
-            update_post_meta($post_id, '_project_sources', $_POST['project_sources']);
-            update_post_meta($post_id, '_project_demo', $_POST['project_demo']);
+
+            if (isset($_POST['project_sources']) && !empty($_POST['project_sources'])) {
+                update_post_meta($post_id, '_project_sources', $_POST['project_sources']);
+            }
+
+            if (isset($_POST['project_demo']) && !empty($_POST['project_demo'])) {
+                update_post_meta($post_id, '_project_demo', $_POST['project_demo']);
+            }
         }
     }
 }
-add_action('save_post', 'projects_type_save_metabox_info', $priority = 10, $accepted_args = 2);
+add_action('save_post_projects', 'projects_type_save_metabox_info', $priority = 10, $accepted_args = 2);

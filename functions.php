@@ -24,6 +24,17 @@ function hacklab_enqueue_front_scripts() {
 add_action('wp_enqueue_script', 'hacklab_enqueue_front_scripts', $priority = 10, $accepted_args = 0);
 
 /*
+ *  Menus
+*/
+function hacklab_register_nav_menus() {
+	register_nav_menus(array(
+		'main_menu' => 'Menu principal',
+		'footer_menu' => 'Menu du pied de page',
+	) );
+}
+add_action( 'after_setup_theme', 'hacklab_register_nav_menus' );
+
+/*
  *  Thumbnails
  */
 if (function_exists('add_theme_support')) {
