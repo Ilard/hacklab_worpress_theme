@@ -12,5 +12,15 @@
     </head>
     <body>
         <header class="header">
-            Entête de page
+            <div class="header-wrapper">
+                <div class="header-logo">
+                    <a class="logo" href="#">Logo Hacklab</a>
+                </div>
+                <div class="header-menu-toggle">
+
+                </div>
+                <div class="header-menu">
+                    <?php wp_nav_menu(array('theme_location' => 'main_menu')); ?>
+                </div>
+            </div>
         </header>
