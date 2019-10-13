@@ -25,7 +25,7 @@ add_action('wp_enqueue_script', 'hacklab_enqueue_front_scripts', $priority = 10,
 
 /*
  *  Menus
-*/
+ */
 function hacklab_register_nav_menus() {
 	register_nav_menus(array(
 		'main_menu' => 'Emplacement menu principal',
@@ -33,6 +33,11 @@ function hacklab_register_nav_menus() {
 	) );
 }
 add_action('after_setup_theme', 'hacklab_register_nav_menus');
+
+/*
+ * Settings page
+ */
+ require_once "settings/settings.php";
 
 /*
  *  Thumbnails
@@ -45,3 +50,13 @@ if (function_exists('add_theme_support')) {
  *  Post types
  */
 require_once "types/projects.php";
+
+/*
+ *  MIME types
+ */
+ /* Autoriser les fichiers SVG */
+function wpc_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'wpc_mime_types');

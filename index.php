@@ -3,7 +3,22 @@
         <div class="cover">
             <div class="cover-wrapper">
                 <div class="cover-background">
+                    <?php
+                        $coverImg01 = get_option("_cover_image_01", "");
+                        if (!empty($coverImg01)) {
+                            echo "<img src='". $coverImg01 . "' />";
+                        }
 
+                        $coverImg02 = get_option("_cover_image_02", "");
+                        if (!empty($coverImg02)) {
+                            echo "<img src='". $coverImg02 . "' />";
+                        }
+
+                        $coverImg03 = get_option("_cover_image_03", "");
+                        if (!empty($coverImg03)) {
+                            echo "<img src='". $coverImg03 . "' />";
+                        }
+                    ?>
                 </div>
                 <div class="cover-calendar">
                     <div class="cover-calendar-event">
@@ -71,10 +86,25 @@
                 <h2>À propos de nous</h2>
                 <div class="about-content">
                     <div class="about-content-introduction">
-
+                        <?= stripcslashes(get_option("_about_text", "")); ?>
                     </div>
                     <div class="about-content-skills">
-
+                        <?php
+                            for ($i=1; $i<=4; $i++) {
+                        ?>
+                        <div class="about-content-skills-item">
+                            <a href="<?= get_option("_skill_link_0" . $i, ""); ?>">
+                                <div class="about-content-skills-item-title">
+                                    <h2><?= get_option("_skill_title_0" . $i, ""); ?></h2>
+                                </div>
+                                <div class="about-content-skills-item-image">
+                                    <img src="<?= get_option("_skill_image_0" . $i, ""); ?>" alt="<?= get_option("_skill_title_0" . $i, ""); ?>">
+                                </div>
+                            </a>
+                        </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
