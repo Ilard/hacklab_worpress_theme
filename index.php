@@ -122,24 +122,24 @@
 
                         if (have_posts()): while (have_posts()): the_post();
                     ?>
-                    <div class="project">
+                    <div class="project-item">
                         <a href="<?php the_permalink(); ?>" class="project-link">
-                            <div class="project-categpry">
-                                <?php
-                                    $categories = wp_get_object_terms($post->ID, "projects-categories");
-                                    $categoriesLenght = count($categories);
-                                    $count = 1;
+                            <div class="project-header">
+                                <div class="project-category">
+                                    <?php
+                                        $categories = wp_get_object_terms($post->ID, "projects-categories");
+                                        $categoriesLenght = count($categories);
+                                        $count = 1;
 
-                                    foreach ($categories as $category) {
-                                        echo $category->name;
-                                        if ($count < $categoriesLenght) {
-                                            echo ", ";
+                                        foreach ($categories as $category) {
+                                            echo $category->name;
+                                            if ($count < $categoriesLenght) {
+                                                echo ", ";
+                                            }
+                                            $count++;
                                         }
-                                        $count++;
-                                    }
-                                ?>
-                            </div>
-                            <div class="project-image">
+                                    ?>
+                                </div>
                                 <?php the_post_thumbnail("project-teaser"); ?>
                             </div>
                             <div class="project-details">
@@ -149,7 +149,7 @@
                                 <div class="project-excerpt">
                                     <?php the_excerpt(); ?>
                                 </div>
-                                <button>En savoir plus</button>
+                                <button class="button">En savoir plus</button>
                             </div>
                         </a>
                     </div>
@@ -161,20 +161,81 @@
                 </div>
             </div>
         </div>
-        <div class="section diary">
-            <div class="section-wrapper">
-                <h2>Agenda</h2>
-            </div>
-        </div>
         <div class="section blog">
             <div class="section-wrapper">
                 <h2>Blog</h2>
+                <div class="blog-content">
+                    <?php
+                        $args = array(
+                            "posts_per_page" => 8,
+                            "post_type" => "post"
+                        );
+                        query_posts($args);
+
+                        if (have_posts()): while (have_posts()): the_post();
+                    ?>
+                    <div class="blog-item">
+                        <a href="<?php the_permalink(); ?>" class="blog-link">
+                            <div class="blog">
+                                <div class="blog-header">
+                                    <div class="blog-category">
+                                        <?php
+                                            $categories = wp_get_post_categories($post->ID);
+                                            $categoriesLenght = count($categories);
+                                            $count = 1;
+
+                                            foreach ($categories as $category) {
+                                                $category = get_category($category);
+                                                echo $category->name;
+                                                if ($count < $categoriesLenght) {
+                                                    echo ", ";
+                                                }
+                                                $count++;
+                                            }
+                                        ?>
+                                    </div>
+                                    <?php the_post_thumbnail("blog-teaser"); ?>
+                                </div>
+                                <div class="blog-details">
+                                    <div class="blog-title">
+                                        <?php the_title(); ?>
+                                    </div>
+                                    <div class="blog-excerpt">
+                                        <?php the_excerpt(); ?>
+                                    </div>
+                                    <button class"button">En savoir plus</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php
+                        endwhile;
+                        endif;
+                        wp_reset_query();
+                    ?>
+                </div>
             </div>
         </div>
         <div class="section contact">
             <div class="section-wrapper">
                 <h2>Nous contacter</h2>
+                <div class="contact-form">
+                    <?php echo FrmFormsController::get_form_shortcode( array('id' => 1, 'title' => false, 'description' => false )); ?>
+                </div>
             </div>
+        </div>
+        <div class="section map">
+            <div id="contact-map" class="contact-map" style="width: 100%; height: 400px;"></div>
+            <script type="text/javascript">
+                var map = L.map('contact-map').setView([49.77413, 4.72486], 18);
+                var markerMcl = L.marker([49.77391, 4.72542]).addTo(map);
+                var markerMediatheque = L.marker([49.77425, 4.72432]).addTo(map);
+
+                var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 20
+                }).addTo(map);
+            </script>
         </div>
     </div>
 <?php get_footer(); ?>

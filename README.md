@@ -9,4 +9,4 @@ This theme isn't complete. Work in progress...
 5. Follow installation instructions (except step 2.2) : `https://github.com/WOoOinux/gulp`
 
 ## DEPENDENCIES
-You have to install the plugin Event Organiser (https://wordpress.org/plugins/event-organiser/).
+You have to install the plugin Event Organiser (https://wordpress.org/plugins/event-organiser/) and Formidable Forms (https://fr.wordpress.org/plugins/formidable/).
