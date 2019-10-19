@@ -112,6 +112,53 @@
         <div class="section projects">
             <div class="section-wrapper">
                 <h2>Nos derniers projets</h2>
+                <div class="projects-content">
+                    <?php
+                        $args = array(
+                            "posts_per_page" => 8,
+                            "post_type" => "projects"
+                        );
+                        query_posts($args);
+
+                        if (have_posts()): while (have_posts()): the_post();
+                    ?>
+                    <div class="project">
+                        <a href="<?php the_permalink(); ?>" class="project-link">
+                            <div class="project-categpry">
+                                <?php
+                                    $categories = wp_get_object_terms($post->ID, "projects-categories");
+                                    $categoriesLenght = count($categories);
+                                    $count = 1;
+
+                                    foreach ($categories as $category) {
+                                        echo $category->name;
+                                        if ($count < $categoriesLenght) {
+                                            echo ", ";
+                                        }
+                                        $count++;
+                                    }
+                                ?>
+                            </div>
+                            <div class="project-image">
+                                <?php the_post_thumbnail("project-teaser"); ?>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-title">
+                                    <?php the_title(); ?>
+                                </div>
+                                <div class="project-excerpt">
+                                    <?php the_excerpt(); ?>
+                                </div>
+                                <button>En savoir plus</button>
+                            </div>
+                        </a>
+                    </div>
+                    <?php
+                        endwhile;
+                        endif;
+                        wp_reset_query();
+                    ?>
+                </div>
             </div>
         </div>
         <div class="section diary">

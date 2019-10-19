@@ -35,6 +35,13 @@ function hacklab_register_nav_menus() {
 add_action('after_setup_theme', 'hacklab_register_nav_menus');
 
 /*
+ * Images sizes
+ */
+ add_image_size("project-teaser", 350, 200, true);
+ add_image_size("event-teaser", 350, 200, true);
+ add_image_size("article-teaser", 350, 200, true);
+
+/*
  * Settings page
  */
  require_once "settings/settings.php";
@@ -55,8 +62,21 @@ require_once "types/projects.php";
  *  MIME types
  */
  /* Autoriser les fichiers SVG */
-function wpc_mime_types($mimes) {
+function hacklab_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;
 }
-add_filter('upload_mimes', 'wpc_mime_types');
+add_filter('upload_mimes', 'hacklab_mime_types');
+
+/*
+ * Excerpt
+ */
+ function hacklab_excerpt_length($length) {
+     return 30;
+ }
+ add_filter('excerpt_length', 'hacklab_excerpt_length', 10);
+
+ function hacklab_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'hacklab_excerpt_more', 10);
