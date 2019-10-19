@@ -93,7 +93,7 @@
                             for ($i=1; $i<=4; $i++) {
                         ?>
                         <div class="about-content-skills-item">
-                            <a href="<?= get_option("_skill_link_0" . $i, ""); ?>">
+                            <a href="<?= get_the_permalink(get_option("_skill_link_0" . $i, "")); ?>">
                                 <div class="about-content-skills-item-title">
                                     <h2><?= get_option("_skill_title_0" . $i, ""); ?></h2>
                                 </div>
