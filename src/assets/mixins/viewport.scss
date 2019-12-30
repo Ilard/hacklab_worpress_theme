@@ -1,0 +1,47 @@
+@mixin viewport-xs($min-width: $min-width-xs) {
+
+    @media screen and (min-width: $min-width) {
+
+        @at-root body {
+            content: 'xs';
+        }
+
+        @content;
+    }
+}
+
+@mixin viewport-sm($min-width: $min-width-sm) {
+
+    @media screen and (min-width: $min-width) {
+
+        @at-root body {
+            content: 'sm';
+        }
+
+        @content;
+    }
+}
+
+@mixin viewport-md($min-width: $min-width-md) {
+
+    @media screen and (min-width: $min-width) {
+
+        @at-root body {
+            content: 'md';
+        }
+
+        @content;
+    }
+}
+
+@mixin viewport-xl($min-width: $min-width-xl) {
+
+    @media screen and (min-width: $min-width) {
+
+        @at-root body {
+            content: 'xl';
+        }
+        
+        @content;
+    }
+}
