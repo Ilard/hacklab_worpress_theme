@@ -1,11 +1,22 @@
 @import "assets/reset-css/**/*";
-
 @import "assets/fonts/**/*";
+@import "assets/variables";
 
-@import "assets/components/**/*";
-@import "assets/pages/**/*";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: $default-font-family !important;
+}
 
 body {
     max-width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
+
+a {
+    text-decoration: none;
+}
+
+@import "assets/components/**/*";
+@import "assets/pages/**/*";

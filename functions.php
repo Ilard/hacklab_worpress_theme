@@ -13,7 +13,7 @@
 function hacklab_enqueue_admin_scripts() {
     $handle = "hacklab-scripts";
     $src = get_template_directory_uri() . "/dist/scripts.admin.min.js";
-    $deps = "jquery";
+    $deps = array("jquery");
     $ver = null;
     $in_footer = true;
     wp_enqueue_script($handle, $src);
@@ -23,7 +23,7 @@ add_action("admin_enqueue_scripts", "hacklab_enqueue_admin_scripts", $priority =
 function hacklab_enqueue_front_scripts() {
     $handle = "hacklab-scripts";
     $src = get_template_directory_uri() . "/dist/scripts.min.js";
-    $deps = "jquery";
+    $deps = array("jquery");
     $ver = null;
     $in_footer = true;
     wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);

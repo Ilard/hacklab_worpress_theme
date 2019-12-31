@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: $header-xs-height;
 
     &-wrapper {
         display: flex;
@@ -14,7 +14,7 @@
         padding: 0 10px;
 
         height: 100%;
-        background-color: red;
+        background-color: $color-white;
     }
 
     &-logo {
@@ -22,6 +22,7 @@
     }
 
     &-menu {
+        position: relative;
         display: flex;
         align-items: center;
         height: 100%;
@@ -34,8 +35,6 @@
 
             height: 40px;
             width: 40px;
-
-            background-color: green;
 
             &-content {
                 display: flex;
@@ -51,32 +50,134 @@
                     height: 2px;
                     width: 100%;
 
-                    background-color: $color-white;
+                    background-color: $color-main;
 
-                    &:after,
-                    &:before {
+                    transition: background-color linear .2s;
+                    transition-delay: .2s;
+
+                    &:before,
+                    &:after {
                         content: '';
                         position: absolute;
-                        background-color: $color-white;
+                        display: block;
+                        background-color: $color-main;
                         height: 2px;
-                        width: 60%;
-                        left: 50%;
-                        transform: translateX(-50%);
+                        width: 100%;
+                        transform: rotate(0deg);
+                        transform-origin: center;
                     }
 
                     &:before {
                         top: -9px;
+                        transition: top .2s linear .2s,
+                                    transform .2s linear 0s;
                     }
 
                     &:after {
                         bottom: -9px;
+                        transition: bottom .2s linear .2s,
+                                    transform .2s linear 0s;
                     }
                 }
             }
         }
 
         &-content {
-            display: none;
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding-top: $header-xs-height;
+            height: 0;
+            overflow: hidden;
+            background-color: $color-white;
+
+            transition: height ease-in-out .3s;
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+
+                &-item {
+                    margin-top: 20px;
+
+                    a {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        width: auto;
+                        height: 40px;
+
+                        font: {
+                            size: 20px;
+                            weight: 600;
+                        }
+                        color: $color-dark-grey;
+
+                        transition: color ease-in-out .3s;
+
+                        &:after {
+
+                            @include viewport-md {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 50%;
+                                right: 50%;
+                                transform: translateX(-50%);
+                                width: 30px;
+                                height: 2px;
+                                background-color: $color-dark-grey;
+                                transition: width ease-in-out .3s, background-color ease-in-out .3s;
+                            }
+                        }
+
+                        &:hover {
+                            color: $color-secondary;
+
+                            &:after,
+                            &:focus {
+                                width: 100%;
+                                background-color: $color-secondary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.js-menu-active {
+
+            .header-menu-toggle {
+
+                .header-menu-toggle-content {
+
+                    span {
+                        background-color: transparent;
+
+                        &:before {
+                            top: 0;
+                            transform: rotate(45deg);
+                            transition: top .2s linear 0s,
+                                        transform .2s linear .2s;
+                        }
+
+                        &:after {
+                            bottom: 0;
+                            transform: rotate(-45deg);
+                            transition: bottom .2s linear 0s,
+                                        transform .2s linear .2s;
+                        }
+                    }
+                }
+            }
+
+            .header-menu-content {
+                height: 100vh;
+            }
         }
     }
 }
