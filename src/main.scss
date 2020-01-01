@@ -12,6 +12,10 @@
 body {
     max-width: 100%;
     overflow-x: hidden;
+
+    &.js-no-scroll {
+        overflow: hidden;
+    }
 }
 
 a {

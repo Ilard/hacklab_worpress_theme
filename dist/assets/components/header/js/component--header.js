@@ -1,7 +1,6 @@
 jQuery(function ($) {
-  const menu = $('.header-menu'),
-        toggleButton = $('.header-menu-toggle');
-  toggleButton.on('click', () => {
-    menu.toggleClass('js-menu-active');
+  $('.header-menu-toggle').on('click', () => {
+    $('.header-menu').toggleClass('js-menu-active');
+    $('body').toggleClass('js-no-scroll');
   });
 });

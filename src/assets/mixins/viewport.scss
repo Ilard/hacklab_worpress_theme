@@ -34,14 +34,14 @@
     }
 }
 
-@mixin viewport-xl($min-width: $min-width-xl) {
+@mixin viewport-lg($min-width: $min-width-lg) {
 
     @media screen and (min-width: $min-width) {
 
         @at-root body {
             content: 'xl';
         }
-        
+
         @content;
     }
 }

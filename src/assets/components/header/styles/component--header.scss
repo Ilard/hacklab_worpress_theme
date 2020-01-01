@@ -7,18 +7,47 @@
     right: 0;
     height: $header-xs-height;
 
+    @include viewport-md {
+        height: $header-md-height;
+    }
+
     &-wrapper {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         padding: 0 10px;
 
         height: 100%;
         background-color: $color-white;
+
+        @include viewport-md {
+            margin: 0 auto;
+            padding: 0 40px;
+            max-width: $container-max-md-width;
+            background-color: transparent;
+        }
+
+        @include viewport-lg {
+            max-width: $container-max-lg-width;
+        }
     }
 
     &-logo {
 
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 120px;
+            background-color: $color-main;
+            font :{
+                size: 16px;
+                weight: 300;
+            };
+            color: $color-white;
+        }
     }
 
     &-menu {
@@ -28,13 +57,16 @@
         height: 100%;
 
         &-toggle {
-
             display: flex;
             justify-content: center;
             align-items: center;
 
             height: 40px;
             width: 40px;
+
+            @include viewport-md {
+                display: none;
+            }
 
             &-content {
                 display: flex;
@@ -95,12 +127,30 @@
 
             transition: height ease-in-out .3s;
 
+            @include viewport-md {
+                position: relative;
+                z-index: 2;
+                padding: 0;
+                height: $header-md-height;
+                background-color: transparent;
+            }
+
             .menu {
                 display: flex;
                 flex-direction: column;
 
+                @include viewport-md {
+                    height: $header-md-height;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
                 &-item {
                     margin-top: 20px;
+
+                    @include viewport-md {
+                        margin: 0;
+                    }
 
                     a {
                         position: relative;
@@ -119,6 +169,11 @@
 
                         transition: color ease-in-out .3s;
 
+                        @include viewport-md {
+                            margin: 0 30px;
+                            color: $color-white;
+                        }
+
                         &:after {
 
                             @include viewport-md {
@@ -128,9 +183,9 @@
                                 left: 50%;
                                 right: 50%;
                                 transform: translateX(-50%);
-                                width: 30px;
-                                height: 2px;
-                                background-color: $color-dark-grey;
+                                width: 20px;
+                                height: 1px;
+                                background-color: $color-white;
                                 transition: width ease-in-out .3s, background-color ease-in-out .3s;
                             }
                         }
@@ -144,6 +199,7 @@
                                 background-color: $color-secondary;
                             }
                         }
+
                     }
                 }
             }
