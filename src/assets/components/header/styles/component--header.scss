@@ -9,6 +9,15 @@
 
     @include viewport-md {
         height: $header-md-height;
+
+        transition: background-color ease-in-out .3s;
+    }
+
+    @at-root body.scrolled & {
+
+        @include viewport-md {
+            background-color: rgba($color-white, .9);
+        }
     }
 
     &-wrapper {
@@ -41,7 +50,7 @@
             align-items: center;
             height: 30px;
             width: 120px;
-            background-color: $color-main;
+            background-color: $color-dark-blue;
             font :{
                 size: 16px;
                 weight: 300;
@@ -82,7 +91,7 @@
                     height: 2px;
                     width: 100%;
 
-                    background-color: $color-main;
+                    background-color: $color-dark-blue;
 
                     transition: background-color linear .2s;
                     transition-delay: .2s;
@@ -92,7 +101,7 @@
                         content: '';
                         position: absolute;
                         display: block;
-                        background-color: $color-main;
+                        background-color: $color-dark-blue;
                         height: 2px;
                         width: 100%;
                         transform: rotate(0deg);
@@ -165,13 +174,27 @@
                             size: 20px;
                             weight: 600;
                         }
-                        color: $color-dark-grey;
+                        color: $color-dark-gray;
 
                         transition: color ease-in-out .3s;
 
                         @include viewport-md {
                             margin: 0 30px;
                             color: $color-white;
+                        }
+
+                        @at-root body.scrolled & {
+
+                            @include viewport-md {
+                                color: $color-dark-gray;
+                            }
+
+                            &:hover {
+
+                                @include viewport-md {
+                                    color: $color-dark-blue;
+                                }
+                            }
                         }
 
                         &:after {
@@ -183,23 +206,34 @@
                                 left: 50%;
                                 right: 50%;
                                 transform: translateX(-50%);
-                                width: 20px;
+                                width: 0;
                                 height: 1px;
                                 background-color: $color-white;
                                 transition: width ease-in-out .3s, background-color ease-in-out .3s;
                             }
+
+                            @at-root body.scrolled & {
+
+                                @include viewport-md {
+                                    background-color: $color-dark-gray;
+                                }
+
+                                &:hover {
+
+                                    @include viewport-md {
+                                        background-color: $color-dark-blue;
+                                    }
+                                }
+                            }
                         }
 
                         &:hover {
-                            color: $color-secondary;
 
                             &:after,
                             &:focus {
                                 width: 100%;
-                                background-color: $color-secondary;
                             }
                         }
-
                     }
                 }
             }

@@ -163,6 +163,18 @@ img {
 @media screen and (min-width: 1200px) {
     .header {
         height: 100px;
+        -webkit-transition: background-color ease-in-out .3s;
+        transition: background-color ease-in-out .3s;
+    }
+
+    body {
+        content: 'md';
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body.scrolled .header {
+        background-color: rgba(255, 255, 255, .9);
     }
 
     body {
@@ -213,7 +225,7 @@ img {
     width: 120px;
     height: 30px;
     color: #fff;
-    background-color: #7f8688;
+    background-color: #274472;
     -webkit-box-pack: center;
             justify-content: center;
     -webkit-box-align: center;
@@ -268,7 +280,7 @@ img {
     transition: background-color linear .2s;
     -webkit-transition-delay: .2s;
             transition-delay: .2s;
-    background-color: #7f8688;
+    background-color: #274472;
 }
 
 .header-menu-toggle-content span:before,
@@ -282,7 +294,7 @@ img {
             transform: rotate(0deg);
     -webkit-transform-origin: center;
             transform-origin: center;
-    background-color: #7f8688;
+    background-color: #274472;
 }
 
 .header-menu-toggle-content span:before {
@@ -395,12 +407,32 @@ img {
 }
 
 @media screen and (min-width: 1200px) {
+    body.scrolled .header-menu-content .menu-item a {
+        color: #2c2e31;
+    }
+
+    body {
+        content: 'md';
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body.scrolled .header-menu-content .menu-item a:hover {
+        color: #274472;
+    }
+
+    body {
+        content: 'md';
+    }
+}
+
+@media screen and (min-width: 1200px) {
     .header-menu-content .menu-item a:after {
         position: absolute;
         right: 50%;
         bottom: 0;
         left: 50%;
-        width: 20px;
+        width: 0;
         height: 1px;
         content: '';
         -webkit-transition: width ease-in-out .3s, background-color ease-in-out .3s;
@@ -415,14 +447,29 @@ img {
     }
 }
 
-.header-menu-content .menu-item a:hover {
-    color: #f3e367;
+@media screen and (min-width: 1200px) {
+    body.scrolled .header-menu-content .menu-item a:after {
+        background-color: #2c2e31;
+    }
+
+    body {
+        content: 'md';
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body.scrolled .header-menu-content .menu-item a:after:hover {
+        background-color: #274472;
+    }
+
+    body {
+        content: 'md';
+    }
 }
 
 .header-menu-content .menu-item a:hover:after,
 .header-menu-content .menu-item a:hover:focus {
     width: 100%;
-    background-color: #f3e367;
 }
 
 .header-menu.js-menu-active .header-menu-toggle .header-menu-toggle-content span {
